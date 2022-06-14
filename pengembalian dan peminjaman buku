@@ -93,7 +93,19 @@ mulaimenu:
 			system("pause");
 			system("cls");
 			goto mulaimenu;
-		}	
+		}
+	}else if(pil == 2){
+		system("cls");
+		cout<<"\n"<<endl;
+		cout<<"\t\t\tDaftar Buku"<<endl;
+		cout<<"\t\t\t___________\n"<<endl;
+	cout<<"-------------------------------------------------------------------\n";
+	cout<<" No Kode Buku   Judul Buku   Harga Sewa   Jumlah Buku   Buku Keluar\n";
+	
+	cout<<"-------------------------------------------------------------------\n";
+	for(c=0;c<=b;c++){
+	stok = buku[c].stok-pinjembuku[c].dipinjem;
+	
 
 
 
