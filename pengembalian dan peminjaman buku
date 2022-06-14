@@ -31,7 +31,7 @@ login:
 	string user = "";
 	string pass = "";
 	cout<<"\n\n\n\n\n\n\n\n";
-	cout<<"\t\t ------- Program Aplikasi Sederhana Perpustakaan --------\n\n";
+	cout<<"\t\t ------- Program Aplikasi Perpustakaan Sederhana --------\n\n";
 	cout << "\t\t\t  Username : "; cin>>user;
 	cout << "\t\t\t  Password : ";
 	ch = _getch();
@@ -42,7 +42,7 @@ login:
     }
     cout<<endl;
 	if(user == "Rosalia" && pass == "123"){
-		cout << "\n\n Anda berhasil login. \n" << endl;
+		cout << "\n\n Login Berhasil. \n" << endl;
 		system("pause");
 		system("cls");
 		goto mulaimenu;
@@ -75,7 +75,7 @@ mulaimenu:
 		b++;
 			cout<<" Masukan data buku Ke \t: "<<b+1<<endl; 
 			cout<<" Kode Buku \t\t:";scanf("%d%c", &buku[b].kodeB, &temp);
-			cout<<" judul Buku\t\t:";gets(buku[b].judul);
+			cout<<" Judul Buku\t\t:";gets(buku[b].judul);
 			cout<<" Harga Sewa \t\t:";scanf("%d%c", &buku[b].sewa, &temp);
 			cout<<" Jumlah Buku\t\t:";scanf("%d%c", &buku[b].stock, &temp);
 			cout<<endl;
@@ -132,7 +132,7 @@ mulaimenu:
 				cout<<" Tanggal Balik (DDMMYYYY)\t:";scanf("%d%c", &pinjembuku[d].tglbalik, &temp);
 				lp = (pinjembuku[d].tglbalik-pinjembuku[d].tglpin)/1000000;
 				cout<<" Lama Pinjaman \t\t\t:"<<lp<<" Hari"<<endl;
-				cout<<" banyak buku yang di pinjam  \t:";scanf("%d%c", &pinjembuku[d].dipinjem, &temp);
+				cout<<" Banyak buku yang di pinjam  \t:";scanf("%d%c", &pinjembuku[d].dipinjem, &temp);
 				hs = pinjembuku[d].dipinjem*buku[d].sewa;
 				cout<<" Harga Sewa \t\t\t:"<<hs;
 				cout<<endl;
