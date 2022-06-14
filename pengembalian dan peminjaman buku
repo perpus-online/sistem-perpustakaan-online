@@ -52,7 +52,48 @@ login:
    	    	system("cls");
 	 goto login;
 	}
-
+mulaimenu: 
+	int pil; 
+	cout<<"---- Aplikasi Perpustakaan ----"<<endl;
+    cout<<"-------- Menu ----------\n";
+    cout<<" 1. Input Buku        \n";
+    cout<<" 2. Daftar Buku       \n";
+    cout<<" 3. Peminjaman      \n";
+    cout<<" 4. Pengembalian    \n";
+    cout<<" 5. Laporan   \n";
+    cout<<" 6. Exit                \n";
+    cout<<"----------------------\n";
+    cout<<"Masukan Pilihan anda[ 1 s.d. 6 ] = ";cin>>pil; 
+    
+	if(pil ==1){ 
+		inbuk:
+		system("cls");
+		cout<<"\n"<<endl;	
+		cout<<"\t\t\tInput Buku : \n"; 
+		cout<<"\t\t\t________\n"<<endl;
+		cout<<endl;
+		b++;
+			cout<<" Masukan data buku Ke \t: "<<b+1<<endl; 
+			cout<<" Kode Buku \t\t:";scanf("%d%c", &buku[b].kodeB, &temp);
+			cout<<" judul Buku\t\t:";gets(buku[b].judul);
+			cout<<" Harga Sewa \t\t:";scanf("%d%c", &buku[b].sewa, &temp);
+			cout<<" Jumlah Buku\t\t:";scanf("%d%c", &buku[b].stock, &temp);
+			cout<<endl;
+			cout<<"Apakah Anda Ingin Menambahkan Data Lagi ? (y/n) :";cin>>yn;
+			if(yn=='y'||yn=='Y'){
+				goto inbuk;
+			}else{
+				cout << "\n\n Data Berhasil Disimpan \n" << endl;
+				system("pause");
+				system("cls");
+				goto mulaimenu;
+			}
+		{
+			cout << "\n\n Data Berhasil Disimpan \n" << endl;
+			system("pause");
+			system("cls");
+			goto mulaimenu;
+		}	
 
 
 
