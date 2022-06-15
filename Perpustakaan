@@ -1,10 +1,10 @@
 #include <iostream> 
 #include <conio.h>
 #include <string.h>
-#include <unistd.h>
 #include <dos.h>
 #include <iomanip>
 #include <cstdlib>
+#include <unistd.h>
 
 using namespace std; 
 void Loading(){
@@ -62,14 +62,14 @@ login:
 		cout << " Login Berhasil. " << endl;
 		system("pause");
 		system("cls");
-		goto mulaimenu;
+		goto menu;
 	}else{
 		cout<<" Maaf Password yang Anda Masukkan Salah \n";
    	    	system("pause");
    	    	system("cls");
 	 goto login;
 	}
-mulaimenu: 
+menu: 
 
     cout<<"-------------------------------------"<<endl;
     cout<<"-------- Menu Perpustakaan ----------\n";
@@ -103,13 +103,13 @@ mulaimenu:
 				cout << "Data Berhasil Disimpan " << endl;
 				system("pause");
 				system("cls");
-				goto mulaimenu;
+				goto menu;
 			}
 		{
 			cout << " Data Berhasil Disimpan " << endl;
 			system("pause");
 			system("cls");
-			goto mulaimenu;
+			goto menu;
 		}
 	}else if(pil == 2){
 		system("cls");
@@ -127,7 +127,7 @@ mulaimenu:
 		cout<<endl;
 		system("pause");
 		system("cls");
-		goto mulaimenu;
+		goto menu;
 		
 	}else if(pil == 3){
 		transaksipinkem :
@@ -156,19 +156,19 @@ mulaimenu:
 			cout<<"Apakah Anda Ingin Menambahkan Data Lagi ? (y/n) :";cin>>yn;
 			
 			if(yn=='y'||yn=='Y'){
-				goto transaksipinjem;
+				goto transaksipinkem;
 			}else{
 				cout << " Data Berhasil Disimpan " << endl;
 				system("pause");
 				system("cls");
-				goto mulaimenu;
+				goto menu;
 			}
 				
 		}else if(pil == 4){ 
 		system("cls");
 		pengembalian:
 	
-			cout<<"\t Masukan kode Peminjaman :";cin>>kodepin; //memasukan kode peminjaman 
+			cout<<"\t Masukan kode Peminjaman :";cin>>kodepin;  
 			cout<<"________________________"<<endl<<endl;
 			cout<<endl;
 			for(f=0;f<=d;f++){ 
@@ -205,12 +205,12 @@ mulaimenu:
 						cout << " Data Berhasil Disimpan " << endl;
 						system("pause");
 						system("cls");
-						goto mulaimenu;
+						goto menu;
 					}else{
 						cout << " Data Berhasil Disimpan " << endl;
 						system("pause");
 						system("cls");
-						goto mulaimenu;
+						goto menu;
 					}
 				}else{
 					cout << " Data Tidak Di temukan " << endl;
@@ -220,11 +220,48 @@ mulaimenu:
 						goto pengembalian;	
 					}else{
 						system("cls");
-						goto mulaimenu;	
+						goto menu;	
 					}
 				}
 			}
-	}
-
-
+	}else if(pil == 5){ 
+		system("cls");
+			cout<<"\n"<<endl;	
+			cout<<"\t\t\t laporan Perpustakaan\n"; 
+			cout<<"\t\t\t________\n"<<endl;
+			cout<<"-----------------------------------------------------------------------------------------------------------------------\n";
+			cout<<" No  Kode Peminjam  Judul Buku  Nama Peminjam    Alamat           Tanggal Pinjam  Tanggal Balik   Status   Buku Keluar \n";
+			cout<<"-----------------------------------------------------------------------------------------------------------------------\n";
+			for(g=0;g<=b;g++){ 
+				if(pinjembuku[g].kB==buku[g].kodeB){
+					cout<<setw(2)<<g+1<<setw(10)<<pinjembuku[g].kodepinjam<<setw(13)<<buku[g].judul<<setw(12)<<pinjembuku[g].namap
+					<<setw(14)<<pinjembuku[g].alamat<<setw(20)<<pinjembuku[g].tglpin<<setw(10)<<pinjembuku[g].tglbalik
+					<<setw(12)<<pinjembuku[g].status;
+					if((pinjembuku[g].status == 'y') || (pinjembuku[g].status == 'Y')){
+						cout<<" (di Pinjam) "<<endl;
+					}else{
+						cout<<" (di kembalikan) "<<endl;
+					}
+					cout<<setw(12)<<pinjembuku[g].dipinjem;	
+					cout<<endl;
+				}
+			}
+		system("pause");
+		system("cls");
+		goto menu;
+		
+	
+	}else if(pil == 6){ 
+		cout<<"-- Anda Telah Logout -- \n";
+		cout<<"-- Program Aplikasi Perpustakaan Sederhana dengan menggunakan Dev C++  --\n";
+		system("pause");
+		system("cls");
+		goto login;
+		
+	}else{ 
+		system("cls");
+		goto menu;
+	}	
+	
+	
 }
