@@ -1,15 +1,32 @@
 #include <iostream> 
 #include <conio.h>
 #include <string.h>
+#include <unistd.h>
 #include <dos.h>
 #include <iomanip>
 #include <cstdlib>
+
 using namespace std; 
+void Loading(){
+	for(int i = 0 ; i<=100; i++){
+		system("cls");
+	
+		cout<<"\t\t Loading ..."<<i<<"%"<<endl;
+		for(int j = 1;j<=i; j++){
+		if(j%2==0){
+			cout<<"|";
+			
+		}			
+	}cout<<endl;
+	usleep(10); 
+	}getch;
+	system("cls");
+}
 struct buku 
 {
-	int kodeB,sewa,stock;
+	int kodeB,sewa,stock,b;
 	char judul[20];
-	int b;
+
 }buku[100]; 
 struct pinjam 
 {
@@ -20,9 +37,10 @@ struct pinjam
 }pinjembuku[100]; 
 
 int main(){
+	Loading();
 	system("cls");
 	
-	int jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok;
+	int jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok,pil; 
 	int b =-1; 
 	int d =-1;
 	char yn,ch,temp;
@@ -34,7 +52,7 @@ login:
 	cout << "\t  Username : "; cin>>user;
 	cout << "\t  Password : ";
 	ch = _getch();
-    while(ch != 13){ //character 13 is enter
+    while(ch != 13){ 
     pass.push_back(ch);
     cout << '*';
     ch = _getch();
@@ -46,15 +64,16 @@ login:
 		system("cls");
 		goto mulaimenu;
 	}else{
-		cout<<" Password Anda Salah \n";
+		cout<<" Maaf Password yang Anda Masukkan Salah \n";
    	    	system("pause");
    	    	system("cls");
 	 goto login;
 	}
 mulaimenu: 
-	int pil; 
-	cout<<"---- Aplikasi Perpustakaan ----"<<endl;
-    cout<<"-------- Menu ----------\n";
+
+    cout<<"-------------------------------------"<<endl;
+    cout<<"-------- Menu Perpustakaan ----------\n";
+    cout<<"-------------------------------------"<<endl;
     cout<<" 1. Input Buku        \n";
     cout<<" 2. Daftar Buku       \n";
     cout<<" 3. Peminjaman      \n";
@@ -68,7 +87,7 @@ mulaimenu:
 		inbuk:
 		system("cls");	
 		cout<<"\t Input Buku : \n"; 
-		cout<<"\t________"<<endl;
+		cout<<"________________________"<<endl<<endl;
 		cout<<endl;
 		b++;
 			cout<<" Masukan data buku Ke \t: "<<b+1<<endl; 
@@ -95,16 +114,15 @@ mulaimenu:
 	}else if(pil == 2){
 		system("cls");
 		cout<<"\tDaftar Buku"<<endl;
-		cout<<"\t___________"<<endl;
+		cout<<"________________________"<<endl<<endl;
 	cout<<"-------------------------------------------------------------------\n";
 	cout<<" No Kode Buku   Judul Buku   Harga Sewa   Jumlah Buku   Buku Keluar\n";
 	
 	cout<<"-------------------------------------------------------------------\n";
-		for(c=0;c<=b;c++){
-		stok = buku[c].stok-pinjembuku[c].dipinjem;
-	
-		cout<<setw(2)<<c+1<<setw(8)<<buku[c].kodeB<<setw(22)<<buku[c].judul<<setw(10)<<buku[c].sewa<<setw(14)<<stok<<setw(12)<<pinjembuku[c].dipinjem;
-		cout<<endl;
+			for(c=0;c<=b;c++){
+			stok = buku[c].stock-pinjembuku[c].dipinjem;
+			cout<<setw(2)<<c+1<<setw(8)<<buku[c].kodeB<<setw(22)<<buku[c].judul<<setw(10)<<buku[c].sewa<<setw(14)<<stok<<setw(12)<<pinjembuku[c].dipinjem;
+			cout<<endl;
 		}
 		cout<<endl;
 		system("pause");
@@ -117,11 +135,11 @@ mulaimenu:
 			system("cls");
 			cout<<"\n"<<endl;
 			cout<<" Transaksi Peminjaman : "<<endl;
-			cout<<"___________"<<endl;
+			cout<<"________________________"<<endl<<endl;
 			cout<<endl;
 				cout<<" Masukan data Pinjaman Ke \t :"<<d+1<<endl;
-				cout<<" Kode Pinjaman \t\t\t :";scanf ("%d%c, &pinjembuku[d].kodepinjam, &temp);
-				cout<<" Kode Buku \t\t\t :";scanf ("%d%c, &pinjembuku[d].kB, &temp);
+				cout<<" Kode Pinjaman \t\t\t :";scanf ("%d%c", &pinjembuku[d].kodepinjam, &temp);
+				cout<<" Kode Buku \t\t\t :";scanf ("%d%c", &pinjembuku[d].kB, &temp);
 
 				cout<<" Nama Penyewa Buku \t\t:";gets(pinjembuku[d].namap);
 				cout<<" Alamat Penyewa \t\t:";gets(pinjembuku[d].alamat);
@@ -151,7 +169,7 @@ mulaimenu:
 		pengembalian:
 	
 			cout<<"\t Masukan kode Peminjaman :";cin>>kodepin; //memasukan kode peminjaman 
-			cout<<"\t________"<<endl;
+			cout<<"________________________"<<endl<<endl;
 			cout<<endl;
 			for(f=0;f<=d;f++){ 
 				if(pinjembuku[f].kodepinjam==kodepin){
