@@ -113,7 +113,7 @@ menu:
 		}
 	}else if(pil == 2){
 		system("cls");
-		cout<<"\tDaftar Buku"<<endl;
+		cout<<"\t Daftar Buku"<<endl;
 		cout<<"________________________"<<endl<<endl;
 	cout<<"-------------------------------------------------------------------\n";
 	cout<<" No Kode Buku   Judul Buku   Harga Sewa   Jumlah Buku   Buku Keluar\n";
@@ -133,25 +133,24 @@ menu:
 		transaksipinkem :
 			d++;
 			system("cls");
-			cout<<"\n"<<endl;
 			cout<<" Transaksi Peminjaman : "<<endl;
 			cout<<"________________________"<<endl<<endl;
 			cout<<endl;
 				cout<<" Masukan data Pinjaman Ke \t :"<<d+1<<endl;
-				cout<<" Kode Pinjaman \t\t\t :";scanf ("%d%c", &pinjembuku[d].kodepinjam, &temp);
-				cout<<" Kode Buku \t\t\t :";scanf ("%d%c", &pinjembuku[d].kB, &temp);
+				cout<<" Kode Pinjaman \t :";scanf ("%d%c", &pinjembuku[d].kodepinjam, &temp);
+				cout<<" Kode Buku \t :";scanf ("%d%c", &pinjembuku[d].kB, &temp);
 
-				cout<<" Nama Penyewa Buku \t\t:";gets(pinjembuku[d].namap);
-				cout<<" Alamat Penyewa \t\t:";gets(pinjembuku[d].alamat);
+				cout<<" Nama Penyewa Buku \t:";gets(pinjembuku[d].namap);
+				cout<<" Alamat Penyewa \t:";gets(pinjembuku[d].alamat);
 				cout<<" Tanggal Pinjam (DDMMYYYY)\t:";scanf("%d%c", &pinjembuku[d].tglpin, &temp);
 				cout<<" Tanggal Balik (DDMMYYYY)\t:";scanf("%d%c", &pinjembuku[d].tglbalik, &temp);
 				lp = (pinjembuku[d].tglbalik-pinjembuku[d].tglpin)/1000000;
-				cout<<" Lama Pinjaman \t\t\t:"<<lp<<" Hari"<<endl;
+				cout<<" Lama Pinjaman \t:"<<lp<<" Hari"<<endl;
 				cout<<" Banyak buku yang di pinjam  \t:";scanf("%d%c", &pinjembuku[d].dipinjem, &temp);
 				hs = pinjembuku[d].dipinjem*buku[d].sewa;
-				cout<<" Harga Sewa \t\t\t:"<<hs;
+				cout<<" Harga Sewa \t:"<<hs;
 				cout<<endl;
-				cout<<" Status dipinjam (y) ? \t\t:";cin>>pinjembuku[d].status;
+				cout<<" Status dipinjam (y) ? \t:";cin>>pinjembuku[d].status;
 				cout<<endl;
 			cout<<"Apakah Anda Ingin Menambahkan Data Lagi ? (y/n) :";cin>>yn;
 			
@@ -226,9 +225,8 @@ menu:
 			}
 	}else if(pil == 5){ 
 		system("cls");
-			cout<<"\n"<<endl;	
-			cout<<"\t\t\t laporan Perpustakaan\n"; 
-			cout<<"\t\t\t________\n"<<endl;
+			cout<<"\t laporan Perpustakaan\n"; 
+			cout<<"\t________"<<endl;
 			cout<<"-----------------------------------------------------------------------------------------------------------------------\n";
 			cout<<" No  Kode Peminjam  Judul Buku  Nama Peminjam    Alamat           Tanggal Pinjam  Tanggal Balik   Status   Buku Keluar \n";
 			cout<<"-----------------------------------------------------------------------------------------------------------------------\n";
