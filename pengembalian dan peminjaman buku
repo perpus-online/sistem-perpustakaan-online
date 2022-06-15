@@ -30,10 +30,9 @@ int main(){
 login:
 	string user = "";
 	string pass = "";
-	cout<<"\n\n\n\n\n\n\n\n";
-	cout<<"\t\t ------- Program Aplikasi Perpustakaan Sederhana --------\n\n";
-	cout << "\t\t\t  Username : "; cin>>user;
-	cout << "\t\t\t  Password : ";
+	cout<<"\t ------- Program Aplikasi Perpustakaan Sederhana --------\n";
+	cout << "\t  Username : "; cin>>user;
+	cout << "\t  Password : ";
 	ch = _getch();
     while(ch != 13){ //character 13 is enter
     pass.push_back(ch);
@@ -42,7 +41,7 @@ login:
     }
     cout<<endl;
 	if(user == "Rosalia" && pass == "123"){
-		cout << "\n\n Login Berhasil. \n" << endl;
+		cout << " Login Berhasil. " << endl;
 		system("pause");
 		system("cls");
 		goto mulaimenu;
@@ -67,38 +66,36 @@ mulaimenu:
     
 	if(pil ==1){ 
 		inbuk:
-		system("cls");
-		cout<<"\n"<<endl;	
-		cout<<"\t\t\tInput Buku : \n"; 
-		cout<<"\t\t\t________\n"<<endl;
+		system("cls");	
+		cout<<"\t Input Buku : \n"; 
+		cout<<"\t________"<<endl;
 		cout<<endl;
 		b++;
 			cout<<" Masukan data buku Ke \t: "<<b+1<<endl; 
-			cout<<" Kode Buku \t\t:";scanf("%d%c", &buku[b].kodeB, &temp);
-			cout<<" Judul Buku\t\t:";gets(buku[b].judul);
-			cout<<" Harga Sewa \t\t:";scanf("%d%c", &buku[b].sewa, &temp);
-			cout<<" Jumlah Buku\t\t:";scanf("%d%c", &buku[b].stock, &temp);
+			cout<<" Kode Buku \t:";scanf("%d%c", &buku[b].kodeB, &temp);
+			cout<<" Judul Buku\t:";gets(buku[b].judul);
+			cout<<" Harga Sewa \t:";scanf("%d%c", &buku[b].sewa, &temp);
+			cout<<" Jumlah Buku \t:";scanf("%d%c", &buku[b].stock, &temp);
 			cout<<endl;
 			cout<<"Apakah Anda Ingin Menambahkan Data Lagi ? (y/n) :";cin>>yn;
 			if(yn=='y'||yn=='Y'){
 				goto inbuk;
 			}else{
-				cout << "\n\n Data Berhasil Disimpan \n" << endl;
+				cout << "Data Berhasil Disimpan " << endl;
 				system("pause");
 				system("cls");
 				goto mulaimenu;
 			}
 		{
-			cout << "\n\n Data Berhasil Disimpan \n" << endl;
+			cout << " Data Berhasil Disimpan " << endl;
 			system("pause");
 			system("cls");
 			goto mulaimenu;
 		}
 	}else if(pil == 2){
 		system("cls");
-		cout<<"\n"<<endl;
-		cout<<"\t\t\tDaftar Buku"<<endl;
-		cout<<"\t\t\t___________\n"<<endl;
+		cout<<"\tDaftar Buku"<<endl;
+		cout<<"\t___________"<<endl;
 	cout<<"-------------------------------------------------------------------\n";
 	cout<<" No Kode Buku   Judul Buku   Harga Sewa   Jumlah Buku   Buku Keluar\n";
 	
@@ -119,8 +116,8 @@ mulaimenu:
 			d++;
 			system("cls");
 			cout<<"\n"<<endl;
-			cout<<"\t\t\t Transaksi Peminjaman : \n"<<endl;
-			cout<<"\t\t\t___________\n"<<endl;
+			cout<<" Transaksi Peminjaman : "<<endl;
+			cout<<"___________"<<endl;
 			cout<<endl;
 				cout<<" Masukan data Pinjaman Ke \t :"<<d+1<<endl;
 				cout<<" Kode Pinjaman \t\t\t :";scanf ("%d%c, &pinjembuku[d].kodepinjam, &temp);
@@ -143,13 +140,73 @@ mulaimenu:
 			if(yn=='y'||yn=='Y'){
 				goto transaksipinjem;
 			}else{
-				cout << "\n\n Data Berhasil Disimpan \n" << endl;
+				cout << " Data Berhasil Disimpan " << endl;
 				system("pause");
 				system("cls");
 				goto mulaimenu;
 			}
 				
-
+		}else if(pil == 4){ 
+		system("cls");
+		pengembalian:
+	
+			cout<<"\t Masukan kode Peminjaman :";cin>>kodepin; //memasukan kode peminjaman 
+			cout<<"\t________"<<endl;
+			cout<<endl;
+			for(f=0;f<=d;f++){ 
+				if(pinjembuku[f].kodepinjam==kodepin){
+					cout<<" Nama Penyewa Buku \t:"<<pinjembuku[f].namap;
+					cout<<endl;
+					cout<<" Alamat Penyewa \t:"<<pinjembuku[f].alamat;
+					cout<<endl;
+					if(buku[f].kodeB==pinjembuku[f].kB){
+						cout<<" Judul Buku \t:"<<buku[f].judul<<endl;
+					}
+					cout<<" Tanggal Pinjam (DDMMYYYY)\t:"<<pinjembuku[f].tglpin;
+					cout<<endl;
+					cout<<" Tanggal Balik (DDMMYYYY)\t:"<<pinjembuku[f].tglbalik;
+					cout<<endl;
+					lp = (pinjembuku[f].tglbalik-pinjembuku[f].tglpin)/1000000;
+					cout<<" Lama Pinjaman \t:"<<lp<<" Hari"<<endl;
+					cout<<endl;
+					cout<<" banyak buku yang di pinjam  \t:"<<pinjembuku[f].dipinjem;
+					cout<<endl;
+					hs = pinjembuku[f].dipinjem*buku[f].sewa;
+					cout<<" Harga Sewa \t:"<<hs<<endl;
+					cout<<" Status : "<<pinjembuku[f].status;
+					if((pinjembuku[f].status == 'y') || (pinjembuku[f].status == 'Y')){
+						cout<<" (di Pinjam) "<<endl;
+					}else{
+						cout<<" (di kembalikan) "<<endl;
+					}
+					cout<<endl;
+					cout<<" Sudah di kembalikan ? (y/n) : ";cin>>yn;
+					if((yn == 'Y') || (yn == 'y')){
+						cout<<" ganti status ( input n ) :";
+						cin>>pinjembuku[f].status;
+						cout << " Data Berhasil Disimpan " << endl;
+						system("pause");
+						system("cls");
+						goto mulaimenu;
+					}else{
+						cout << " Data Berhasil Disimpan " << endl;
+						system("pause");
+						system("cls");
+						goto mulaimenu;
+					}
+				}else{
+					cout << " Data Tidak Di temukan " << endl;
+					cout<<" Apakah ingin mengulang kembali ? (y/n) : ";cin>>yn;
+					if(yn == 'Y' || yn == 'y'){
+						system("cls");
+						goto pengembalian;	
+					}else{
+						system("cls");
+						goto mulaimenu;	
+					}
+				}
+			}
+	}
 
 
 }
